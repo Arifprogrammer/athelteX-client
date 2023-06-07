@@ -14,7 +14,7 @@ const Footer = () => {
           <p>
             AthleteX Industries Ltd.
             <br />
-            Providing reliable tech since 1992
+            Providing quality classes since 2012
           </p>
         </div>
         <div className="mx-auto lg:ml-0">

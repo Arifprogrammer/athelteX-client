@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  // const user = { name: "Arif" };
-  const user = null;
+  const user = { name: "Arif" };
+  // const user = null;
   const isAdmin = true;
 
   /* const handleLogOut = () => {
@@ -26,56 +26,46 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/menu"
+          to="/instructors"
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
           }
         >
-          Our Menu
+          Instructors
         </NavLink>
       </li>
       <li>
         <NavLink
-          to="/order/salad"
+          to="/classes"
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
           }
         >
-          Order Food
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/blog"
-          className={({ isActive }) =>
-            isActive
-              ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
-          }
-        >
-          Blog
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={isAdmin ? "/dashboard/adminhome" : "/dashboard/userhome"}
-          className={({ isActive }) =>
-            isActive
-              ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
-          }
-        >
-          Dashboard
+          Classes
         </NavLink>
       </li>
       {user ? (
-        <li className="lg:hidden">
-          <button className="font-semibold">Logout</button>
-        </li>
+        <>
+          <li>
+            <NavLink
+              to={isAdmin ? "/dashboard/adminhome" : "/dashboard/userhome"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
+                  : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
+              }
+            >
+              Dashboard
+            </NavLink>
+          </li>
+          <li className="lg:hidden">
+            <button className="font-semibold">Logout</button>
+          </li>
+        </>
       ) : (
         <li className="lg:hidden">
           <NavLink

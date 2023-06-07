@@ -1,5 +1,13 @@
+import Banner from "../Banner/Banner";
+
 const HomePage = () => {
-  return <div className="pt-28">Hello i am home page</div>;
+  return (
+    <>
+      <section className="pt-28">
+        <Banner />
+      </section>
+    </>
+  );
 };
 
 export default HomePage;
