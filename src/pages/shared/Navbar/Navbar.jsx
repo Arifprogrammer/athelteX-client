@@ -17,8 +17,8 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "text-yellow-500 font-semibold lg:border-b-4 border-b-yellow-500"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-yellow-500 lg:text-white hover:text-yellow-500"
+              ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
+              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
           }
         >
           Home
@@ -29,8 +29,8 @@ const Navbar = () => {
           to="/menu"
           className={({ isActive }) =>
             isActive
-              ? "text-yellow-500 font-semibold lg:border-b-4 border-b-yellow-500"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-yellow-500 lg:text-white hover:text-yellow-500"
+              ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
+              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
           }
         >
           Our Menu
@@ -41,8 +41,8 @@ const Navbar = () => {
           to="/order/salad"
           className={({ isActive }) =>
             isActive
-              ? "text-yellow-500 font-semibold lg:border-b-4 border-b-yellow-500"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-yellow-500 lg:text-white hover:text-yellow-500"
+              ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
+              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
           }
         >
           Order Food
@@ -53,8 +53,8 @@ const Navbar = () => {
           to="/blog"
           className={({ isActive }) =>
             isActive
-              ? "text-yellow-500 font-semibold lg:border-b-4 border-b-yellow-500"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-yellow-500 lg:text-white hover:text-yellow-500"
+              ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
+              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
           }
         >
           Blog
@@ -65,8 +65,8 @@ const Navbar = () => {
           to={isAdmin ? "/dashboard/adminhome" : "/dashboard/userhome"}
           className={({ isActive }) =>
             isActive
-              ? "text-yellow-500 font-semibold lg:border-b-4 border-b-yellow-500"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-yellow-500 lg:text-white hover:text-yellow-500"
+              ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
+              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
           }
         >
           Dashboard
@@ -82,8 +82,8 @@ const Navbar = () => {
             to="/login"
             className={({ isActive }) =>
               isActive
-                ? "text-yellow-500 font-semibold lg:border-b-4 border-b-yellow-500"
-                : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-yellow-500 lg:text-white hover:text-yellow-500"
+                ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
+                : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
             }
           >
             Login
@@ -155,14 +155,14 @@ const Navbar = () => {
                   className="h-12 w-12 rounded-full"
                 />
               </Link>{" "}
-              <button className="py-3 px-8 font-semibold rounded-md text-black bg-[#C2E0EB]">
+              <button className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700">
                 Logout
               </button>
             </div>
           ) : (
             <Link
               to="/login"
-              className="py-3 px-8 font-semibold rounded-md text-black bg-[#C2E0EB] hidden lg:flex"
+              className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700  hidden lg:flex"
             >
               Login
             </Link>
