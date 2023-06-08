@@ -1,0 +1,98 @@
+[
+  {
+    "id": "1a23b4c5",
+    "image": "https://i.ibb.co/YjcsPm7/tennis-min.jpg",
+    "name": "Tennis Class",
+    "instructor": "John Doe",
+    "email": "john@example.com",
+    "seats": 150,
+    "price": 80,
+    "status": "approved",
+    "enrolled": 124,
+    "feedback": ""
+  },
+  {
+    "id": "2d34e5f6",
+    "image": "https://i.ibb.co/RCW9nrg/rugby-min.jpg",
+    "name": "Rugby Class",
+    "instructor": "Jane Smith",
+    "email": "jane@example.com",
+    "seats": 200,
+    "price": 90,
+    "status": "approved",
+    "enrolled": 253,
+    "feedback": ""
+  },
+  {
+    "id": "3g45h6i7",
+    "image": "https://i.ibb.co/vHJp8q8/ice-hockey-min.jpg",
+    "name": "Ice Hockey class",
+    "instructor": "Alex Johnson",
+    "email": "alex@example.com",
+    "seats": 120,
+    "price": 70,
+    "status": "approved",
+    "enrolled": 75,
+    "feedback": ""
+  },
+  {
+    "id": "4j56k7l8",
+    "image": "https://i.ibb.co/BnvxQnR/golf-min.jpg",
+    "name": "Golf Class",
+    "instructor": "Lisa Anderson",
+    "email": "lisa@example.com",
+    "seats": 180,
+    "price": 75,
+    "status": "approved",
+    "enrolled": 185,
+    "feedback": ""
+  },
+  {
+    "id": "5m67n8o9",
+    "image": "https://i.ibb.co/crb0y20/football-min.jpg",
+    "name": "Football Class",
+    "instructor": "Mike Wilson",
+    "email": "mike@example.com",
+    "seats": 250,
+    "price": 95,
+    "status": "approved",
+    "enrolled": 325,
+    "feedback": ""
+  },
+  {
+    "id": "6p78q9r0",
+    "image": "https://i.ibb.co/dkzcbth/cricket-min.jpg",
+    "name": "Cricket Class",
+    "instructor": "Sara Davis",
+    "email": "sara@example.com",
+    "seats": 300,
+    "price": 85,
+    "status": "approved",
+    "enrolled": 99,
+    "feedback": ""
+  },
+  {
+    "id": "7s89t0u1",
+    "image": "https://i.ibb.co/JzQBPq2/baseball-min.jpg",
+    "name": "Baseball Class",
+    "instructor": "David Brown",
+    "email": "david@example.com",
+    "seats": 160,
+    "price": 80,
+    "status": "approved",
+    "enrolled": 245,
+    "feedback": ""
+  },
+  {
+    "id": "8v90w1x2",
+    "image": "https://i.ibb.co/Nj97vyf/baseketball-min.jpg",
+    "name": "Baskteball Class",
+    "instructor": "Emily Taylor",
+    "email": "emily@example.com",
+    "seats": 220,
+    "price": 100,
+    "status": "approved",
+    "enrolled": 201,
+    "feedback": ""
+  }
+]
