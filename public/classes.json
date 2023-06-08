@@ -65,7 +65,7 @@
     "name": "Cricket Class",
     "instructor": "Sara Davis",
     "email": "sara@example.com",
-    "seats": 300,
+    "seats": 0,
     "price": 85,
     "status": "approved",
     "enrolled": 99,

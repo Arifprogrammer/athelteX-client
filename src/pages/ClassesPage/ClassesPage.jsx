@@ -40,7 +40,13 @@ const ClassesPage = () => {
             <p className="font-semibold text-gray-600 text-center lg:text-left lowercase">
               {singleClass.email}
             </p>
-            <p className="font-semibold text-gray-600 text-center lg:text-left">
+            <p
+              className={` text-center lg:text-left ${
+                singleClass.seats === 0
+                  ? "font-bold text-red-700"
+                  : "font-semibold text-gray-600"
+              }`}
+            >
               Available seats:{" "}
               <span className="text-red-700 font-bold text-xl">
                 {singleClass.seats}
@@ -53,7 +59,14 @@ const ClassesPage = () => {
               </span>
             </p>
             <div className="mt-8 mx-auto w-fit">
-              <button className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700  hidden lg:flex hover:bg-black lg:transition lg:duration-200">
+              <button
+                className={`py-3 px-8 font-semibold -skew-x-12 ${
+                  singleClass.seats === 0
+                    ? "bg-red-400 text-gray-200"
+                    : "text-white  bg-red-700 hover:bg-black lg:transition lg:duration-200"
+                } `}
+                disabled={singleClass.seats === 0 ? true : false}
+              >
                 Select
               </button>
             </div>
