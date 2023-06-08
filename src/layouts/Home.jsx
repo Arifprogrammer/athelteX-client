@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-[80vh]">
+      <div className="min-h-[80vh] text-black">
         <Outlet />
       </div>
       <Footer />
