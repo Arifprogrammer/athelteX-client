@@ -18,7 +18,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
+              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200"
           }
         >
           Home
@@ -30,7 +30,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
+              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200"
           }
         >
           Instructors
@@ -42,7 +42,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
+              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200"
           }
         >
           Classes
@@ -56,7 +56,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive
                   ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
-                  : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700"
+                  : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200"
               }
             >
               Dashboard
@@ -145,14 +145,14 @@ const Navbar = () => {
                   className="h-12 w-12 rounded-full"
                 />
               </Link>{" "}
-              <button className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700">
+              <button className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700 hover:text-red-700 hover:bg-white lg:transition lg:duration-200">
                 Logout
               </button>
             </div>
           ) : (
             <Link
               to="/login"
-              className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700  hidden lg:flex"
+              className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700  hidden lg:flex hover:text-red-700 hover:bg-white lg:transition lg:duration-200"
             >
               Login
             </Link>
