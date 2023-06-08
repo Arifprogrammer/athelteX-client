@@ -1,6 +1,6 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate, useRouteError } from "react-router-dom";
-import errorPic from "../../../assets/404.png";
+import errorPic from "../../assets/404.png";
 
 const ErrorPage = () => {
   const navigate = useNavigate();

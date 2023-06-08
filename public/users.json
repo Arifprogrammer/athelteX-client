@@ -4,7 +4,7 @@
     "image": "https://i.ibb.co/J3v3D7X/tennis-min.png",
     "email": "john@example.com",
     "classes": 5,
-    "role": "Coach",
+    "role": "Instructor",
     "name": "John Doe",
     "category": "tennis"
   },
@@ -13,7 +13,7 @@
     "image": "https://i.ibb.co/TBz7QSQ/rugby-min.png",
     "email": "jhonsmith@example.com",
     "classes": 12,
-    "role": "Coach",
+    "role": "Instructor",
     "name": "Jhon Smith",
     "category": "rugby"
   },
@@ -22,7 +22,7 @@
     "image": "https://i.ibb.co/F3StS5S/icehockey-min.png",
     "email": "alex@example.com",
     "classes": 8,
-    "role": "Coach",
+    "role": "Instructor",
     "name": "Alex Johnson",
     "category": "icehockey"
   },
@@ -31,7 +31,7 @@
     "image": "https://i.ibb.co/qkfmVK8/golf-min.png",
     "email": "hames@example.com",
     "classes": 3,
-    "role": "Coach",
+    "role": "Instructor",
     "name": "Hames Anderson",
     "category": "golf"
   },
@@ -40,7 +40,7 @@
     "image": "https://i.ibb.co/W2Ggc5M/football-min.png",
     "email": "mike@example.com",
     "classes": 15,
-    "role": "Coach",
+    "role": "Instructor",
     "name": "Mike Wilson",
     "category": "football"
   },
@@ -49,7 +49,7 @@
     "image": "https://i.ibb.co/MMtMtRd/baseball-min.png",
     "email": "sam@example.com",
     "classes": 10,
-    "role": "Coach",
+    "role": "Instructor",
     "name": "Sam Davis",
     "category": "baseball"
   },
@@ -58,7 +58,7 @@
     "image": "https://i.ibb.co/JnVp5V0/cricket-min.png",
     "email": "david@example.com",
     "classes": 7,
-    "role": "Coach",
+    "role": "Instructor",
     "name": "David Brown",
     "category": "cricket"
   },
@@ -67,7 +67,7 @@
     "image": "https://i.ibb.co/30J0w5k/baseketball-min.png",
     "email": "emule@example.com",
     "classes": 2,
-    "role": "Coach",
+    "role": "Instructor",
     "name": "Emule Taylor",
     "category": "basketball"
   }

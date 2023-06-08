@@ -7,7 +7,7 @@ const PopularInstructors = () => {
 
   //* effects
   useEffect(() => {
-    fetch("./instructors.json")
+    fetch("./users.json")
       .then((res) => res.json())
       .then((data) => setInstructors(data));
   }, []);
@@ -26,7 +26,7 @@ const PopularInstructors = () => {
               {instructor.name}
             </h1>
             <p className="font-semibold text-gray-600 text-center lg:text-left">
-              {instructor.category} {instructor.role}
+              {instructor.category} Coach
             </p>
           </div>
         ))}
