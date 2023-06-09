@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const user = { name: "Arif" };
-  // const user = null;
+  // const user = { name: "Arif" };
+  const user = null;
   const isAdmin = true;
 
   /* const handleLogOut = () => {
