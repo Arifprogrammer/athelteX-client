@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 // import { AuthContext } from "../../../AuthProvider/AuthProvider";
@@ -12,6 +13,11 @@ const SignIn = () => {
   //* hooks
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   /* const { signIn, signInWithGoogle } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -19,6 +25,7 @@ const SignIn = () => {
   const from = state?.from?.pathname || "/"; */
 
   //* functions
+  const onSubmit = (data) => console.log(data);
   /* const handleSignin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -78,7 +85,10 @@ const SignIn = () => {
     <>
       <section className="py-16 lg:pt-32">
         <div className="card card1 w-[95%] lg:w-[28%] bg-white mx-auto py-16 mt-12 rounded-sm shadow-md shadow-gray-700">
-          <form className="card-body p-5 lg:p-8">
+          <form
+            className="card-body p-5 lg:p-8"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-black font-semibold text-base">
@@ -86,10 +96,9 @@ const SignIn = () => {
                 </span>
               </label>
               <input
-                name="email"
                 type="email"
                 placeholder="Type your email"
-                required
+                {...register("email", { required: true })}
                 className="input input-bordered text-black font-semibold"
               />
             </div>
@@ -100,10 +109,9 @@ const SignIn = () => {
                 </span>
               </label>
               <input
-                name="password"
                 type={showPassword ? "password" : "text"}
                 placeholder="Type your password"
-                required
+                {...register("password", { required: true })}
                 className="input input-bordered text-black font-semibold"
               />
               <div
@@ -117,6 +125,16 @@ const SignIn = () => {
                   Forgot password?
                 </a>
               </label>
+              {errors.email?.type === "required" && (
+                <p className="text-red-600 font-semibold mt-1">
+                  Email is required
+                </p>
+              )}
+              {errors.password?.type === "required" && (
+                <p className="text-red-600 font-semibold mt-1">
+                  Password is required
+                </p>
+              )}
               <p className="text-red-600 font-semibold mt-1">{error}</p>
             </div>
             <div className="form-control mt-6">
