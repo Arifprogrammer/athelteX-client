@@ -92,7 +92,7 @@ const SignIn = () => {
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-black font-semibold text-base">
-                  Email
+                  Email*
                 </span>
               </label>
               <input
@@ -101,11 +101,16 @@ const SignIn = () => {
                 {...register("email", { required: true })}
                 className="input input-bordered text-black font-semibold"
               />
+              {errors.email?.type === "required" && (
+                <p className="text-red-600 font-semibold mt-1">
+                  Email is required
+                </p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-black font-semibold text-base">
-                  Password
+                  Password*
                 </span>
               </label>
               <input
@@ -125,11 +130,7 @@ const SignIn = () => {
                   Forgot password?
                 </a>
               </label>
-              {errors.email?.type === "required" && (
-                <p className="text-red-600 font-semibold mt-1">
-                  Email is required
-                </p>
-              )}
+
               {errors.password?.type === "required" && (
                 <p className="text-red-600 font-semibold mt-1">
                   Password is required
