@@ -1,15 +1,28 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../routes/AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
-  // const user = { name: "Arif" };
-  const user = null;
+  const { user, logOut } = useContext(AuthContext);
   const isAdmin = true;
 
-  /* const handleLogOut = () => {
+  const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        toast.success("You've signed out successfully", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      })
       .catch((error) => console.log(error));
-  }; */
+  };
   const listItem = (
     <>
       <li>
@@ -63,7 +76,9 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="lg:hidden">
-            <button className="font-semibold">Logout</button>
+            <button onClick={handleLogOut} className="font-semibold">
+              Logout
+            </button>
           </li>
         </>
       ) : (
@@ -145,7 +160,10 @@ const Navbar = () => {
                   className="h-12 w-12 rounded-full"
                 />
               </Link>{" "}
-              <button className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700 hover:text-red-700 hover:bg-white lg:transition lg:duration-200">
+              <button
+                onClick={handleLogOut}
+                className="py-3 px-8 font-semibold -skew-x-12 text-white  bg-red-700 hover:text-red-700 hover:bg-white lg:transition lg:duration-200"
+              >
                 Logout
               </button>
             </div>
@@ -168,6 +186,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 };

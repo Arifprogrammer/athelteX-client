@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { useContext } from "react";
+import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { AuthContext } from "../../routes/AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   //* hooks
@@ -15,25 +15,33 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    reset,
   } = useForm();
-  /* const { signIn, signInWithGoogle } =
-    useContext(AuthContext);
+  const { signUp, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const { state } = useLocation();
-  const from = state?.from?.pathname || "/"; */
+  const from = state?.from?.pathname || "/";
 
   //* functions
-  const onSubmit = (data) => console.log(data);
-  /* const handleSignin = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    setError("");
-    signIn(email, password)
+  const profileUpdate = (user, name, photo) => {
+    updateProfile(user, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const onSubmit = (data) => {
+    const { email, password, photo, name } = data;
+    console.log(data, email, password, photo, name);
+
+    signUp(email, password)
       .then((result) => {
-        // console.log(result.user);
-        toast.success("You've signed in successfully", {
+        profileUpdate(result.user, name, photo);
+        toast.success("You've successfully register your account", {
           position: "top-center",
           autoClose: 1000,
           hideProgressBar: false,
@@ -43,23 +51,19 @@ const SignUp = () => {
           progress: undefined,
           theme: "dark",
         });
+        reset();
         setTimeout(() => {
           navigate(from, { replace: true });
         }, 2000);
-        e.target.reset();
       })
       .catch((error) => {
         console.log(error.message);
-        if (error.message === "Firebase: Error (auth/wrong-password).") {
-          setError("Your password is incorrect");
-        }
       });
-  }; */
+  };
 
-  /* const logInWithGoogle = () => {
+  const logInWithGoogle = () => {
     signInWithGoogle()
       .then((result) => {
-        // console.log(result.user);
         toast.success("You've signed in successfully", {
           position: "top-center",
           autoClose: 1000,
@@ -77,12 +81,12 @@ const SignUp = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }; */
+  };
 
   return (
     <>
       <section className="py-16 lg:pt-32">
-        <div className="card card1 w-[95%] lg:w-[28%] bg-white mx-auto py-16 mt-12 rounded-sm shadow-md shadow-gray-700">
+        <div className="card card1 w-[95%] lg:w-[28%] bg-white mx-auto py-8 mt-12 rounded-sm shadow-md shadow-gray-700">
           <form
             className="card-body p-5 lg:p-8"
             onSubmit={handleSubmit(onSubmit)}
@@ -181,7 +185,7 @@ const SignUp = () => {
               </label>
               <input
                 type="password"
-                placeholder="Re-type password "
+                placeholder="Re-type your password "
                 {...register("confirmPassword", {
                   required: true,
                   validate: (value) =>
@@ -215,6 +219,7 @@ const SignUp = () => {
               <button
                 type="submit"
                 className="btn bg-transparent text-black border-red-700 border-2 hover:text-white hover:bg-red-700 hover:border-0 gap-2 text-base lg:text-xl"
+                onClick={logInWithGoogle}
               >
                 <FaGoogle /> <span>Google</span>
               </button>
@@ -232,7 +237,7 @@ const SignUp = () => {
           </form>
         </div>
       </section>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </>
   );
 };

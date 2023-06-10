@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../../routes/AuthProvider/AuthProvider";
 
 const SignIn = () => {
   //* hooks
@@ -17,24 +17,18 @@ const SignIn = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-  /* const { signIn, signInWithGoogle } =
-    useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const { state } = useLocation();
-  const from = state?.from?.pathname || "/"; */
+  const from = state?.from?.pathname || "/";
 
   //* functions
-  const onSubmit = (data) => console.log(data);
-  /* const handleSignin = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    setError("");
+  const onSubmit = (data) => {
+    const { email, password } = data;
     signIn(email, password)
       .then((result) => {
-        // console.log(result.user);
         toast.success("You've signed in successfully", {
           position: "top-center",
           autoClose: 1000,
@@ -48,7 +42,7 @@ const SignIn = () => {
         setTimeout(() => {
           navigate(from, { replace: true });
         }, 2000);
-        e.target.reset();
+        reset();
       })
       .catch((error) => {
         console.log(error.message);
@@ -56,9 +50,9 @@ const SignIn = () => {
           setError("Your password is incorrect");
         }
       });
-  }; */
+  };
 
-  /* const logInWithGoogle = () => {
+  const logInWithGoogle = () => {
     signInWithGoogle()
       .then((result) => {
         // console.log(result.user);
@@ -79,7 +73,7 @@ const SignIn = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }; */
+  };
 
   return (
     <>
@@ -152,6 +146,7 @@ const SignIn = () => {
               </div>
               <button
                 type="submit"
+                onClick={logInWithGoogle}
                 className="btn bg-transparent text-black border-red-700 border-2 hover:text-white hover:bg-red-700 hover:border-0 gap-2 text-base lg:text-xl"
               >
                 <FaGoogle /> <span>Google</span>
@@ -161,7 +156,7 @@ const SignIn = () => {
               Don't have an account?{" "}
               <Link
                 to="/register"
-                //   state={{ from: state?.from }}
+                state={{ from: state?.from }}
                 className="text-red-700 font-bold"
               >
                 Register
@@ -170,7 +165,7 @@ const SignIn = () => {
           </form>
         </div>
       </section>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </>
   );
 };
