@@ -1,6 +1,7 @@
 const ClassesCard = ({ singleClass }) => {
   const {
-    id,
+    // eslint-disable-next-line no-unused-vars
+    _id,
     name,
     image,
     enrolled,
@@ -11,7 +12,6 @@ const ClassesCard = ({ singleClass }) => {
     seats,
     price,
   } = singleClass;
-  console.log(id);
   return (
     <>
       <div className="relative p-6 bg-white rounded-lg">

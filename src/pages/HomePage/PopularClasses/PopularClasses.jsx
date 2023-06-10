@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
 import Title from "../../../components/Title";
+import useClasses from "../../../hooks/useClasses";
 
 const PopularClasses = () => {
-  //* states
-  const [classes, setClasses] = useState([]);
+  //* hooks
+  const [classes] = useClasses();
 
-  //* effects
-  useEffect(() => {
-    fetch("./classes.json")
-      .then((res) => res.json())
-      .then((data) => setClasses(data));
-  }, []);
   return (
     <>
       <Title title={"Students Love The Classes"} />
       <div className="my-container grid grid-cols-1 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-y-12 uppercase px-4 lg:px-0">
         {classes.map((singleClass) => (
-          <div key={singleClass.id} className="relative">
+          <div key={singleClass._id} className="relative">
             <div className="lg:h-[230px] lg:overflow-hidden">
               <img
                 src={singleClass.image}
