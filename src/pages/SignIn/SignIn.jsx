@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
-import { FaGoogle } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from "../../routes/AuthProvider/AuthProvider";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignIn = () => {
   //* hooks
@@ -19,7 +19,7 @@ const SignIn = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const { state } = useLocation();
   const from = state?.from?.pathname || "/";
@@ -49,28 +49,6 @@ const SignIn = () => {
         if (error.message === "Firebase: Error (auth/wrong-password).") {
           setError("Your password is incorrect");
         }
-      });
-  };
-
-  const logInWithGoogle = () => {
-    signInWithGoogle()
-      .then((result) => {
-        toast.success("You've signed in successfully", {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-        setTimeout(() => {
-          navigate(from, { replace: true });
-        }, 1500);
-      })
-      .catch((error) => {
-        console.log(error.message);
       });
   };
 
@@ -143,13 +121,7 @@ const SignIn = () => {
                 <p className="px-4 font-bold">Or</p>
                 <div className="border-[1px] border-slate-700 w-full"></div>
               </div>
-              <button
-                type="submit"
-                onClick={logInWithGoogle}
-                className="btn bg-transparent text-black border-red-700 border-2 hover:text-white hover:bg-red-700 hover:border-0 gap-2 text-base lg:text-xl"
-              >
-                <FaGoogle /> <span>Google</span>
-              </button>
+              <SocialLogin />
             </div>
             <p className="text-center font-semibold">
               Don't have an account?{" "}

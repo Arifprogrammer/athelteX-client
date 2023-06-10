@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../routes/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignUp = () => {
   //* hooks
@@ -17,66 +17,61 @@ const SignUp = () => {
     watch,
     reset,
   } = useForm();
-  const { signUp, signInWithGoogle } = useContext(AuthContext);
+  const { signUp } = useContext(AuthContext);
   const navigate = useNavigate();
   const { state } = useLocation();
   const from = state?.from?.pathname || "/";
 
   //* functions
   const profileUpdate = (user, name, photo) => {
-    updateProfile(user, {
+    return updateProfile(user, {
       displayName: name,
       photoURL: photo,
-    })
-      .then(() => {})
-      .catch((error) => {
-        console.log(error.message);
-      });
+    });
   };
 
   const onSubmit = (data) => {
     const { email, password, photo, name } = data;
-    console.log(data, email, password, photo, name);
-
     signUp(email, password)
       .then((result) => {
-        profileUpdate(result.user, name, photo);
-        toast.success("You've successfully register your account", {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-        reset();
-        setTimeout(() => {
-          navigate(from, { replace: true });
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
-  const logInWithGoogle = () => {
-    signInWithGoogle()
-      .then((result) => {
-        toast.success("You've signed in successfully", {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-        setTimeout(() => {
-          navigate(from, { replace: true });
-        }, 1500);
+        profileUpdate(result.user, name, photo)
+          .then(() => {
+            const user = {
+              email,
+              photo,
+              name,
+              role: "student",
+              category: "trainee",
+              classes: 0,
+            };
+            const addUser = async () => {
+              const res = await fetch("http://localhost:5000/users", {
+                method: "PUT",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(user),
+              });
+              const data = await res.json();
+              console.log(data);
+              if (data.upsertedCount || data.matchedCount) {
+                toast.success("Registration successful", {
+                  position: "top-center",
+                  autoClose: 1000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "dark",
+                });
+                reset();
+                setTimeout(() => {
+                  navigate(from, { replace: true });
+                }, 2000);
+              }
+            };
+            addUser();
+          })
+          .catch((error) => console.log(error.message));
       })
       .catch((error) => {
         console.log(error.message);
@@ -216,13 +211,7 @@ const SignUp = () => {
                 <p className="px-4 font-bold">Or</p>
                 <div className="border-[1px] border-slate-700 w-full"></div>
               </div>
-              <button
-                type="submit"
-                className="btn bg-transparent text-black border-red-700 border-2 hover:text-white hover:bg-red-700 hover:border-0 gap-2 text-base lg:text-xl"
-                onClick={logInWithGoogle}
-              >
-                <FaGoogle /> <span>Google</span>
-              </button>
+              <SocialLogin />
             </div>
             <p className="text-center font-semibold">
               Already have an account?{" "}
