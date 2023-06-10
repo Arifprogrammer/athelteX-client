@@ -228,7 +228,7 @@ const SignUp = () => {
               Already have an account?{" "}
               <Link
                 to="/login"
-                //   state={{ from: state?.from }}
+                state={{ from: state?.from }}
                 className="text-red-700 font-bold"
               >
                 Login

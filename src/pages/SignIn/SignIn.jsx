@@ -55,7 +55,6 @@ const SignIn = () => {
   const logInWithGoogle = () => {
     signInWithGoogle()
       .then((result) => {
-        // console.log(result.user);
         toast.success("You've signed in successfully", {
           position: "top-center",
           autoClose: 1000,

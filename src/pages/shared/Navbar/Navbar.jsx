@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const isAdmin = true;
+  //! const isAdmin = true;
 
   const handleLogOut = () => {
     logOut()
@@ -65,7 +65,7 @@ const Navbar = () => {
         <>
           <li>
             <NavLink
-              to={isAdmin ? "/dashboard/adminhome" : "/dashboard/userhome"}
+              to="/dashboard"
               className={({ isActive }) =>
                 isActive
                   ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"
@@ -126,7 +126,6 @@ const Navbar = () => {
               {listItem}
             </ul>
           </div>
-          {/* <img src={logo} alt="" className="hidden lg:flex h-20 w-24" /> */}
           <div className="px-5 pb-8 pt-3 -skew-x-12  bg-[#F1F2F9] -mb-1 hidden lg:flex">
             <h1 className="text-3xl text-black font-extrabold">
               Athlete
@@ -145,7 +144,6 @@ const Navbar = () => {
               </span>
             </h1>
           </div>
-          {/* <img src={logo} alt="" className="lg:hidden h-20 w-24" /> */}
         </div>
         <div className="navbar-end">
           <ul className="menu menu-horizontal mr-3 gap-4  hidden lg:flex">
@@ -180,7 +178,7 @@ const Navbar = () => {
               <img
                 src={user?.photoURL}
                 alt=""
-                className="h-12 w-12 rounded-full"
+                className="h-10 w-10 lg:h-12 lg:w-12 rounded-full"
               />
             </Link>
           )}
