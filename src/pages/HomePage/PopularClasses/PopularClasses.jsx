@@ -2,7 +2,7 @@ import Title from "../../../components/Title";
 import useClasses from "../../../hooks/useClasses";
 
 const PopularClasses = () => {
-  //* hooks
+  //* customhooks
   const [classes] = useClasses();
 
   return (

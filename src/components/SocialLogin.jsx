@@ -17,7 +17,7 @@ const SocialLogin = () => {
       .then((result) => {
         const user = {
           email: result.user.email,
-          photo: result.user.photoURL,
+          image: result.user.photoURL,
           name: result.user.displayName,
           role: "student",
           category: "trainee",

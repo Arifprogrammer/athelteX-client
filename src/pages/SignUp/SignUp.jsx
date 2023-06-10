@@ -31,14 +31,14 @@ const SignUp = () => {
   };
 
   const onSubmit = (data) => {
-    const { email, password, photo, name } = data;
+    const { email, password, photo: image, name } = data;
     signUp(email, password)
       .then((result) => {
-        profileUpdate(result.user, name, photo)
+        profileUpdate(result.user, name, image)
           .then(() => {
             const user = {
               email,
-              photo,
+              image,
               name,
               role: "student",
               category: "trainee",

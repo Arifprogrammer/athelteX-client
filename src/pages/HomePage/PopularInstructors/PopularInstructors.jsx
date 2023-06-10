@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
 import Title from "../../../components/Title";
+import useInstructors from "../../../hooks/useInstructors";
 
 const PopularInstructors = () => {
-  //* states
-  const [instructors, setInstructors] = useState([]);
+  //* customhooks
+  const [instructors] = useInstructors();
 
-  //* effects
-  useEffect(() => {
-    fetch("./users.json")
-      .then((res) => res.json())
-      .then((data) => setInstructors(data));
-  }, []);
   return (
     <>
       <Title title={"Be Trained by A Professional Coach"} />
       <div className="my-container grid grid-cols-1 lg:grid-cols-4 gap-8 uppercase px-4 lg:px-0 lg:gap-y-12">
         {instructors.map((instructor) => (
-          <div key={instructor.id}>
+          <div key={instructor._id}>
             <img
               src={instructor.image}
               alt=""
