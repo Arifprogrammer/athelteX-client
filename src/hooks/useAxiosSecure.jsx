@@ -1,23 +1,25 @@
-import axios from "axios";
 import { useContext, useEffect } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const axiosSecure = axios.create({
-  baseURL: "https://localhost/5000",
+  baseURL: "http://localhost:5000",
 });
 const useAxiosSecure = () => {
   const { logOut } = useContext(AuthContext);
+  console.log(logOut);
   const navigate = useNavigate();
 
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
       const token = localStorage.getItem("user_access_token");
       if (token) {
-        config.headers.Authorization = `bearer ${token}`;
+        config.headers.Authorization = `Bearer ${token}`;
       }
       return config;
     });
+
     axiosSecure.interceptors.response.use(
       (response) => response,
       async (error) => {
@@ -32,6 +34,7 @@ const useAxiosSecure = () => {
       }
     );
   }, [logOut, navigate]);
+
   return [axiosSecure];
 };
 
