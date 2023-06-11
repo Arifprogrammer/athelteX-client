@@ -1,4 +1,8 @@
+import useStudent from "../../hooks/useStudent";
+
 const ClassesCard = ({ singleClass }) => {
+  const [isStudent] = useStudent();
+  console.log(isStudent);
   const {
     // eslint-disable-next-line no-unused-vars
     _id,
@@ -54,11 +58,11 @@ const ClassesCard = ({ singleClass }) => {
         <div className="mt-8 mx-auto w-fit">
           <button
             className={`py-3 px-8 font-semibold -skew-x-12 ${
-              seats === 0
+              seats === 0 || !isStudent
                 ? "bg-red-400 text-gray-200"
                 : "text-white  bg-red-700 hover:bg-black lg:transition lg:duration-200"
             } `}
-            disabled={seats === 0 ? true : false}
+            disabled={(seats === 0 && true) || !isStudent}
           >
             Select
           </button>

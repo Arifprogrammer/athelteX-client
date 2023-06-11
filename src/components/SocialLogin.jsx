@@ -30,7 +30,6 @@ const SocialLogin = () => {
             body: JSON.stringify(user),
           });
           const data = await res.json();
-          console.log(data);
           if (data.upsertedCount || data.matchedCount) {
             toast.success("Registration successful", {
               position: "top-center",
