@@ -1,8 +1,21 @@
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useStudent from "../../hooks/useStudent";
 
 const ClassesCard = ({ singleClass }) => {
+  //* customhooks
   const [isStudent] = useStudent();
-  console.log(isStudent);
+  const [axiosSecure] = useAxiosSecure();
+
+  //* functions
+  const handleSelectedClasses = (singleClass) => {
+    console.log(singleClass);
+    const addSelectedClasses = async () => {
+      const res = await axiosSecure.post(`/selected`, singleClass);
+      console.log(res.data);
+    };
+    addSelectedClasses();
+  };
+
   const {
     // eslint-disable-next-line no-unused-vars
     _id,
@@ -57,6 +70,7 @@ const ClassesCard = ({ singleClass }) => {
         </p>
         <div className="mt-8 mx-auto w-fit">
           <button
+            onClick={() => handleSelectedClasses(singleClass)}
             className={`py-3 px-8 font-semibold -skew-x-12 ${
               seats === 0 || !isStudent
                 ? "bg-red-400 text-gray-200"
