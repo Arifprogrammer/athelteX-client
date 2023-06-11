@@ -3,8 +3,10 @@ import Title from "../../components/Title";
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const CheckoutForm = ({ specificClass }) => {
+const CheckoutForm = ({ specificClass, refetch }) => {
   //* hooks
   const { user } = useContext(AuthContext);
   const stripe = useStripe();
@@ -13,6 +15,7 @@ const CheckoutForm = ({ specificClass }) => {
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [process, setProcess] = useState(false);
+  const navigate = useNavigate();
   //* variables
   const price = specificClass.price;
 
@@ -35,6 +38,7 @@ const CheckoutForm = ({ specificClass }) => {
       return;
     }
     // Use your card Element with other Stripe.js APIs
+    // eslint-disable-next-line no-unused-vars
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
@@ -82,18 +86,37 @@ const CheckoutForm = ({ specificClass }) => {
           `/payment?email=${user?.email}`,
           payment
         );
-        console.log(res.data);
+        // console.log(res.data);
         if (
           res.data.deleteResult.deletedCount > 0 &&
           res.data.insertResult.insertedId &&
           res.data.updateResult.modifiedCount
         ) {
-          console.log("payment succesfull");
+          setProcess(false);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "success",
+            title: "Payment succesfull",
+          });
+          refetch();
+          setTimeout(() => {
+            navigate("/dashboard/enrolled");
+          }, 1500);
         }
       };
       addData();
     }
-    setProcess(false);
   };
 
   //* Effects
@@ -109,7 +132,7 @@ const CheckoutForm = ({ specificClass }) => {
       <div>
         <Title title="Please proceed your payment" />
       </div>
-      <form onSubmit={handleSubmit} className="w-1/2 mx-auto space-y-5">
+      <form onSubmit={handleSubmit} className="w-1/2 mx-auto space-y-8">
         <CardElement
           options={{
             style: {
@@ -126,16 +149,25 @@ const CheckoutForm = ({ specificClass }) => {
             },
           }}
         />
-        <button
-          type="submit"
-          disabled={!stripe || process || !clientSecret}
-          className="px-4 py-1 bg-gray-500"
-        >
-          Pay
-        </button>
+        <div className="text-center">
+          <button
+            type="submit"
+            disabled={!stripe || process || !clientSecret}
+            className={`font-semibold border-b-4 border-t-4 border-purple-700 px-6 py-1 rounded-xl ${
+              process
+                ? "bg-purple-300 border-purple-300 text-gray-600"
+                : "  hover:border-t-purple-300 hover:bg-purple-300 text-purple-700 hover:text-black lg:transition lg:duration-200"
+            }`}
+          >
+            Pay
+          </button>
+        </div>
       </form>
       <p className="text-red-600 mt-8 text-center font-semibold text-lg">
         {error && error}
+      </p>
+      <p className="text-purple-700 mt-8 text-center font-semibold text-lg">
+        {process && "please wait..."}
       </p>
     </>
   );

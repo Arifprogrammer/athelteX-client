@@ -9,7 +9,7 @@ const Payment = () => {
   //* hooks
   const { id } = useParams();
   //* customhooks
-  const [selectedClasses] = useSelectedClasse();
+  const [selectedClasses, refetch] = useSelectedClasse();
   const specificClass = selectedClasses.find(
     (singleClass) => singleClass._id === id
   );
@@ -18,7 +18,7 @@ const Payment = () => {
     <>
       {specificClass && (
         <Elements stripe={stripePromise}>
-          <CheckoutForm specificClass={specificClass} />
+          <CheckoutForm specificClass={specificClass} refetch={refetch} />
         </Elements>
       )}
     </>

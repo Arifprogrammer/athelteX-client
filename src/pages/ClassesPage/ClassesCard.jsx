@@ -1,18 +1,35 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useStudent from "../../hooks/useStudent";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useSelectedClasse from "../../hooks/useSelectedClasse";
 
 const ClassesCard = ({ singleClass }) => {
   //* hooks
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [disable, setDisable] = useState(false);
 
   //* customhooks
   const [isStudent] = useStudent();
   const [axiosSecure] = useAxiosSecure();
+  const [selectedClasses, refetch] = useSelectedClasse();
+
+  //* variables
+  const {
+    _id,
+    name,
+    image,
+    enrolled,
+    category,
+    role,
+    instructor,
+    email,
+    seats,
+    price,
+  } = singleClass;
 
   //* functions
   const handleSelectedClasses = (singleClass) => {
@@ -37,6 +54,7 @@ const ClassesCard = ({ singleClass }) => {
             icon: "success",
             title: "Selected",
           });
+          refetch();
           setTimeout(() => {
             navigate("/dashboard/selected");
           }, 1500);
@@ -56,19 +74,17 @@ const ClassesCard = ({ singleClass }) => {
     }
   };
 
-  const {
-    // eslint-disable-next-line no-unused-vars
-    _id,
-    name,
-    image,
-    enrolled,
-    category,
-    role,
-    instructor,
-    email,
-    seats,
-    price,
-  } = singleClass;
+  //* useEffetcs
+  useEffect(() => {
+    const findClass = selectedClasses.find(
+      (singleClass) => singleClass.classId === _id
+    );
+    console.log(findClass);
+    if (findClass) {
+      setDisable(true);
+    }
+  }, [_id, selectedClasses]);
+
   return (
     <>
       <div className="relative p-6 bg-white rounded-lg">
@@ -112,11 +128,11 @@ const ClassesCard = ({ singleClass }) => {
           <button
             onClick={() => handleSelectedClasses(singleClass)}
             className={`py-3 px-8 font-semibold -skew-x-12 ${
-              seats === 0 || !isStudent
+              seats === 0 || !isStudent || disable
                 ? "bg-red-400 text-gray-200"
                 : "text-white  bg-red-700 hover:bg-black lg:transition lg:duration-200"
             } `}
-            disabled={(seats === 0 && true) || !isStudent}
+            disabled={(seats === 0 && true) || !isStudent || disable}
           >
             Select
           </button>

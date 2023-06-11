@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const RowsTable = ({ singleClass, index, handleDeleteData }) => {
+const SelectedRowsTable = ({ singleClass, index, handleDeleteData }) => {
   const { _id, name, image, seats, enrolled, price } = singleClass;
   return (
     <>
@@ -18,7 +18,7 @@ const RowsTable = ({ singleClass, index, handleDeleteData }) => {
         <td>{name}</td>
         <td className="pl-12">{seats}</td>
         <td className="pl-14">{enrolled}</td>
-        <td className="pl-5">{price}</td>
+        <td className="pl-5">$ {price}</td>
         <td>
           <button
             className="px-3 border-2 border-red-700 text-red-700 hover:text-white hover:bg-red-700 rounded-3xl"
@@ -39,4 +39,4 @@ const RowsTable = ({ singleClass, index, handleDeleteData }) => {
   );
 };
 
-export default RowsTable;
+export default SelectedRowsTable;

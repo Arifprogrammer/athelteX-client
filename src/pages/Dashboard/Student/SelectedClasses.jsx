@@ -1,7 +1,7 @@
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import RowsTable from "./RowsTable";
 import Swal from "sweetalert2";
 import useSelectedClasse from "../../../hooks/useSelectedClasse";
+import SelectedRowsTable from "./SelectedRowsTable";
 
 const SelectedClasses = () => {
   const [selectedClasses, refetch] = useSelectedClasse();
@@ -50,7 +50,7 @@ const SelectedClasses = () => {
           <tbody>
             {/* row 1 */}
             {selectedClasses?.map((singleClass, index) => (
-              <RowsTable
+              <SelectedRowsTable
                 key={singleClass._id}
                 singleClass={singleClass}
                 index={index}
