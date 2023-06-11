@@ -31,7 +31,7 @@ const SocialLogin = () => {
           });
           const data = await res.json();
           if (data.upsertedCount || data.matchedCount) {
-            toast.success("Registration successful", {
+            toast.success("Login successful", {
               position: "top-center",
               autoClose: 1000,
               hideProgressBar: false,

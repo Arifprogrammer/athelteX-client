@@ -29,7 +29,7 @@ const SignIn = () => {
     const { email, password } = data;
     signIn(email, password)
       .then((result) => {
-        toast.success("You've signed in successfully", {
+        toast.success("Login successful", {
           position: "top-center",
           autoClose: 1000,
           hideProgressBar: false,

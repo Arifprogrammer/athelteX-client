@@ -1,4 +1,18 @@
+import { useQuery } from "react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import RowsTable from "./RowsTable";
+
 const SelectedClasses = () => {
+  const [axiosSecure] = useAxiosSecure();
+  const { data: selectedClasses = [] } = useQuery({
+    queryKey: ["selected"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/dashboard/selected");
+
+      return res.data;
+    },
+  });
+  console.log(selectedClasses);
   return (
     <>
       <div className="overflow-x-auto w-full px-20">
@@ -10,37 +24,20 @@ const SelectedClasses = () => {
               <th>Image</th>
               <th>Name</th>
               <th>Available Seats</th>
-              <th>Students</th>
+              <th>Enrolled Students</th>
               <th>Delete</th>
               <th>Pay</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
-              <th>1</th>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/tailwind-css-component-profile-2@56w.png"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                    <div className="text-sm opacity-50">United States</div>
-                  </div>
-                </div>
-              </td>
-              <td>Zemlak, Daniel and Leannon</td>
-              <td>Purple</td>
-              <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </th>
-            </tr>
+            {selectedClasses?.map((singleClass, index) => (
+              <RowsTable
+                key={singleClass._id}
+                singleClass={singleClass}
+                index={index}
+              />
+            ))}
           </tbody>
         </table>
       </div>

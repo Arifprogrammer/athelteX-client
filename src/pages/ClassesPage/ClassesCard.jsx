@@ -1,19 +1,59 @@
+import { useContext } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useStudent from "../../hooks/useStudent";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const ClassesCard = ({ singleClass }) => {
+  //* hooks
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   //* customhooks
   const [isStudent] = useStudent();
   const [axiosSecure] = useAxiosSecure();
 
   //* functions
   const handleSelectedClasses = (singleClass) => {
-    console.log(singleClass);
-    const addSelectedClasses = async () => {
-      const res = await axiosSecure.post(`/selected`, singleClass);
-      console.log(res.data);
-    };
-    addSelectedClasses();
+    if (user && user?.email) {
+      const addSelectedClasses = async () => {
+        const res = await axiosSecure.post(`/selected`, singleClass);
+        console.log(res.data);
+        if (res.data.insertedId) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "success",
+            title: "Selected",
+          });
+          setTimeout(() => {
+            navigate("/dashboard/selected");
+          }, 1500);
+        }
+      };
+      addSelectedClasses();
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You have to login first!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+    }
   };
 
   const {

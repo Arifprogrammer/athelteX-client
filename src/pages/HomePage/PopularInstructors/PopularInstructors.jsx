@@ -9,7 +9,7 @@ const PopularInstructors = () => {
     <>
       <Title title={"Be Trained by A Professional Coach"} />
       <div className="my-container grid grid-cols-1 lg:grid-cols-4 gap-8 uppercase px-4 lg:px-0 lg:gap-y-12">
-        {instructors.map((instructor) => (
+        {instructors.slice(0, 8).map((instructor) => (
           <div key={instructor._id}>
             <img
               src={instructor.image}
