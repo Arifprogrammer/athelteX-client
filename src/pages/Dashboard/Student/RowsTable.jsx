@@ -1,5 +1,5 @@
-const RowsTable = ({ singleClass, index }) => {
-  const { name, image, seats, enrolled } = singleClass;
+const RowsTable = ({ singleClass, index, handleDeleteData }) => {
+  const { _id, name, image, seats, enrolled } = singleClass;
   return (
     <>
       <tr>
@@ -17,12 +17,15 @@ const RowsTable = ({ singleClass, index }) => {
         <td className="pl-12">{seats}</td>
         <td className="pl-14">{enrolled}</td>
         <td>
-          <button className="px-3 border-2 border-red-700 text-red-700 hover:text-white hover:bg-red-700 rounded-3xl">
+          <button
+            className="px-3 border-2 border-red-700 text-red-700 hover:text-white hover:bg-red-700 rounded-3xl"
+            onClick={() => handleDeleteData(_id)}
+          >
             Delete
           </button>
         </td>
         <td>
-          <button className="px-3 border-2 border-purple-500 text-purple-500 hover:text-white hover:bg-purple-700 hover:border-purple-700 rounded-3xl">
+          <button className="px-3 border-2 border-purple-700 text-purple-700 hover:text-white hover:bg-purple-700 hover:border-purple-700 rounded-3xl">
             Pay
           </button>
         </td>
