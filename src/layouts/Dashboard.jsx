@@ -8,7 +8,7 @@ const Dashboard = () => {
     <>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-start py-20">
+        <div className="drawer-content overflow-x-auto w-full px-40 py-20">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"

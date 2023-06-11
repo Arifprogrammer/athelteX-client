@@ -9,6 +9,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Dashboard from "../layouts/Dashboard";
 import SelectedClasses from "../pages/Dashboard/Student/SelectedClasses";
 import EnrolledClasses from "../pages/Dashboard/Student/EnrolledClasses";
+import Payment from "../pages/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,7 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard />,
     children: [
+      //! student routes
       {
         path: "selected",
         element: <SelectedClasses />,
@@ -49,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "enrolled",
         element: <EnrolledClasses />,
+      },
+      {
+        path: "payment/:id",
+        element: <Payment />,
       },
     ],
   },

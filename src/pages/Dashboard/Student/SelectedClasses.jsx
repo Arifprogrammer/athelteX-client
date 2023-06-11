@@ -1,25 +1,11 @@
-import { useQuery } from "react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import RowsTable from "./RowsTable";
-import { useContext } from "react";
-import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useSelectedClasse from "../../../hooks/useSelectedClasse";
 
 const SelectedClasses = () => {
-  const { user } = useContext(AuthContext);
+  const [selectedClasses, refetch] = useSelectedClasse();
   const [axiosSecure] = useAxiosSecure();
-  const token = localStorage.getItem("user_access_token");
-  const { data: selectedClasses = [], refetch } = useQuery({
-    queryKey: ["selected", user?.email],
-    enabled: !!user?.email && !!token,
-    queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/dashboard/selected?email=${user.email}`
-      );
-
-      return res.data;
-    },
-  });
   const handleDeleteData = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -46,7 +32,7 @@ const SelectedClasses = () => {
 
   return (
     <>
-      <div className="overflow-x-auto w-full px-20">
+      <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
@@ -56,6 +42,7 @@ const SelectedClasses = () => {
               <th>Name</th>
               <th>Available Seats</th>
               <th>Enrolled Students</th>
+              <th>Price</th>
               <th>Delete</th>
               <th>Pay</th>
             </tr>

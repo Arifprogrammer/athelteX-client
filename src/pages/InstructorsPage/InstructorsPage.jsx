@@ -1,3 +1,4 @@
+import Title from "../../components/Title";
 import useInstructors from "../../hooks/useInstructors";
 
 const InstructorsPage = () => {
@@ -5,7 +6,8 @@ const InstructorsPage = () => {
   const [instructors] = useInstructors();
 
   return (
-    <section className="pt-28">
+    <section className="pt-40">
+      <Title title="Join with Your Favourite Instructor" />
       <div className="my-container grid grid-cols-1 lg:grid-cols-4 gap-8 uppercase px-4 lg:px-0 lg:gap-y-12 mb-16 lg:my-24">
         {instructors.map((instructor) => (
           <div key={instructor._id} className="px-6 py-10 bg-white rounded-lg">
