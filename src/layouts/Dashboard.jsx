@@ -1,9 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
 import StudentLi from "../components/StudentLi";
-import useStudent from "../hooks/useStudent";
+import useRole from "../hooks/useRole";
+import InstructorLi from "../components/InstructorLi";
+import AdminLi from "../components/AdminLi";
 
 const Dashboard = () => {
-  const [isStudent] = useStudent();
+  const [isRole] = useRole();
   return (
     <>
       <div className="drawer lg:drawer-open">
@@ -22,7 +24,9 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu px-4 w-80 h-full text-base-content space-y-6 flex flex-col justify-center">
             {/* Sidebar content here */}
-            {isStudent && <StudentLi />}
+            {isRole.student && <StudentLi />}
+            {isRole.instructor && <InstructorLi />}
+            {isRole.admin && <AdminLi />}
             <div className="h-[2px] bg-slate-400"></div>{" "}
             <li className="pt-8">
               <Link

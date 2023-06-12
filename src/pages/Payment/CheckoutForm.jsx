@@ -131,7 +131,7 @@ const CheckoutForm = ({ specificClass, refetch }) => {
   return (
     <>
       <div>
-        <Title title="Please proceed your payment" />
+        <Title title="Please Proceed Your Payment" />
       </div>
       <form onSubmit={handleSubmit} className="w-1/2 mx-auto space-y-8">
         <CardElement

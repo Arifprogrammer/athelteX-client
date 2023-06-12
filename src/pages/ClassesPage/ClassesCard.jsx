@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useStudent from "../../hooks/useStudent";
+import useStudent from "../../hooks/useRole";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";

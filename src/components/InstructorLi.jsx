@@ -1,46 +1,34 @@
 import { NavLink } from "react-router-dom";
 
-const StudentLi = () => {
+const InstructorLi = () => {
   return (
     <>
       <li>
         <NavLink
-          to="/dashboard/selected"
+          to="/dashboard/my_classes"
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700 text-lg"
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
           }
         >
-          Selected Classes
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/dashboard/enrolled"
-          className={({ isActive }) =>
-            isActive
-              ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700 text-lg"
-              : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
-          }
-        >
-          Enrolled Classes
+          My Classes
         </NavLink>
       </li>
       <li className="pb-16">
         <NavLink
-          to="/dashboard/history"
+          to="/dashboard/new_class"
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700 text-lg"
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
           }
         >
-          Payment History
+          Add A Class
         </NavLink>
       </li>
     </>
   );
 };
 
-export default StudentLi;
+export default InstructorLi;
