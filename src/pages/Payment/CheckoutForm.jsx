@@ -63,6 +63,7 @@ const CheckoutForm = ({ specificClass, refetch }) => {
         },
       });
     if (confirmError) {
+      // console.log("confirm error", confirmError);
       setError(confirmError.message);
       setProcess(false);
       return;
@@ -70,7 +71,7 @@ const CheckoutForm = ({ specificClass, refetch }) => {
     // console.log("Payment intent-----------------", paymentIntent);
     if (paymentIntent.status === "succeeded") {
       const payment = {
-        specificClassId: specificClass._id,
+        selectedClassId: specificClass._id,
         classId: specificClass.classId,
         email: user?.email,
         name: user?.displayName,

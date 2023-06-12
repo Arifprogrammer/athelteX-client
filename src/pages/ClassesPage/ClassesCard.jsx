@@ -5,17 +5,20 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useSelectedClasse from "../../hooks/useSelectedClasse";
+import useEnrolledClasses from "../../hooks/useEnrolledClasses";
 
 const ClassesCard = ({ singleClass }) => {
   //* hooks
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [disable, setDisable] = useState(false);
+  const [purchase, setPurchase] = useState(false);
 
   //* customhooks
   const [isStudent] = useStudent();
   const [axiosSecure] = useAxiosSecure();
   const [selectedClasses, refetch] = useSelectedClasse();
+  const [enrolledClasses] = useEnrolledClasses();
 
   //* variables
   const {
@@ -79,11 +82,19 @@ const ClassesCard = ({ singleClass }) => {
     const findClass = selectedClasses.find(
       (singleClass) => singleClass.classId === _id
     );
-    console.log(findClass);
     if (findClass) {
       setDisable(true);
     }
   }, [_id, selectedClasses]);
+
+  useEffect(() => {
+    const findClass = enrolledClasses.find(
+      (singleClass) => singleClass.classId === _id
+    );
+    if (findClass) {
+      setPurchase(true);
+    }
+  }, [_id, enrolledClasses]);
 
   return (
     <>
@@ -128,13 +139,15 @@ const ClassesCard = ({ singleClass }) => {
           <button
             onClick={() => handleSelectedClasses(singleClass)}
             className={`py-3 px-8 font-semibold -skew-x-12 ${
-              seats === 0 || !isStudent || disable
+              seats === 0 || !isStudent || disable || purchase
                 ? "bg-red-400 text-gray-200"
                 : "text-white  bg-red-700 hover:bg-black lg:transition lg:duration-200"
             } `}
-            disabled={(seats === 0 && true) || !isStudent || disable}
+            disabled={
+              (seats === 0 && true) || !isStudent || disable || purchase
+            }
           >
-            Select
+            {purchase ? "Purchased" : "Select"}
           </button>
         </div>
       </div>

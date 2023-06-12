@@ -49,16 +49,24 @@ const SelectedClasses = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {selectedClasses?.map((singleClass, index) => (
-              <SelectedRowsTable
-                key={singleClass._id}
-                singleClass={singleClass}
-                index={index}
-                handleDeleteData={handleDeleteData}
-              />
-            ))}
+            {selectedClasses &&
+              selectedClasses?.map((singleClass, index) => (
+                <SelectedRowsTable
+                  key={singleClass._id}
+                  singleClass={singleClass}
+                  index={index}
+                  handleDeleteData={handleDeleteData}
+                />
+              ))}
           </tbody>
         </table>
+        {selectedClasses.length === 0 && (
+          <>
+            <p className="mt-10 text-red-600 font-bold text-lg text-center">
+              You have not selected any classes yet !!!
+            </p>
+          </>
+        )}
       </div>
     </>
   );

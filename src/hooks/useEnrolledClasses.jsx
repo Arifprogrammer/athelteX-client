@@ -8,7 +8,7 @@ const useEnrolledClasses = () => {
   const [axiosSecure] = useAxiosSecure();
   const token = localStorage.getItem("user_access_token");
   const { data: enrolledClasses = [], refetch } = useQuery({
-    queryKey: ["selected", user?.email],
+    queryKey: ["enrolled", user?.email],
     enabled: !!user?.email && !!token,
     queryFn: async () => {
       const res = await axiosSecure.get(
