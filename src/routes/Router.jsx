@@ -10,6 +10,7 @@ import Dashboard from "../layouts/Dashboard";
 import SelectedClasses from "../pages/Dashboard/Student/SelectedClasses";
 import EnrolledClasses from "../pages/Dashboard/Student/EnrolledClasses";
 import Payment from "../pages/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "payment/:id",
         element: <Payment />,
+      },
+      {
+        path: "history",
+        element: <PaymentHistory />,
       },
     ],
   },
