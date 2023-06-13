@@ -12,7 +12,7 @@ const PopularClasses = () => {
     <>
       <Title title={"Students Love The Classes"} />
       <div className="my-container grid grid-cols-1 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-y-12 uppercase px-4 lg:px-0">
-        {approvedClasses.map((singleClass) => (
+        {approvedClasses.slice(0, 8).map((singleClass) => (
           <div key={singleClass._id} className="relative">
             <div className="lg:h-[230px] lg:overflow-hidden">
               <img

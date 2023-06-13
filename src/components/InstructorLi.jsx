@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { MdVideoLibrary, MdModeEdit } from "react-icons/md";
 
 const InstructorLi = () => {
   return (
@@ -12,7 +13,7 @@ const InstructorLi = () => {
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
           }
         >
-          My Classes
+          <MdVideoLibrary /> My Classes
         </NavLink>
       </li>
       <li className="pb-16">
@@ -24,7 +25,7 @@ const InstructorLi = () => {
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
           }
         >
-          Add A Class
+          <MdModeEdit /> Add A Class
         </NavLink>
       </li>
     </>

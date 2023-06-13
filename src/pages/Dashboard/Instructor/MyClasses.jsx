@@ -20,6 +20,8 @@ const MyClasses = () => {
       return res.data;
     },
   });
+  const reverseClasses = [...myClasses].reverse();
+
   return (
     <>
       <div className="overflow-x-auto w-full px-20">
@@ -38,8 +40,8 @@ const MyClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {myClasses &&
-              myClasses?.map((singleClass, index) => (
+            {reverseClasses &&
+              reverseClasses?.map((singleClass, index) => (
                 <ClassesRowsTable
                   key={singleClass._id}
                   singleClass={singleClass}
@@ -48,7 +50,7 @@ const MyClasses = () => {
               ))}
           </tbody>
         </table>
-        {myClasses.length === 0 && (
+        {reverseClasses.length === 0 && (
           <>
             <p className="mt-10 text-red-600 font-bold text-lg text-center">
               You have not add any classes yet !!!

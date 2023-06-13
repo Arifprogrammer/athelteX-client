@@ -15,7 +15,7 @@ const InstructorsPage = () => {
               <img
                 src={instructor.image}
                 alt=""
-                className="w-full lg:grayscale-0 lg:hover:grayscale lg:transition lg:duration-200 lg:hover:scale-110"
+                className="w-full min-h-[341px] lg:grayscale-0 lg:hover:grayscale lg:transition lg:duration-200 lg:hover:scale-110"
               />
             </div>
             <h1 className="mt-4 text-2xl font-bold text-center lg:text-left">

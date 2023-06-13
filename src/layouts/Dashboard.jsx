@@ -3,6 +3,9 @@ import StudentLi from "../components/StudentLi";
 import useRole from "../hooks/useRole";
 import InstructorLi from "../components/InstructorLi";
 import AdminLi from "../components/AdminLi";
+import { ImHome3 } from "react-icons/im";
+import { GiTeacher } from "react-icons/gi";
+import { MdOndemandVideo } from "react-icons/md";
 
 const Dashboard = () => {
   const [isRole] = useRole();
@@ -33,7 +36,7 @@ const Dashboard = () => {
                 to="/"
                 className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
               >
-                Home
+                <ImHome3 /> Home
               </Link>
             </li>
             <li>
@@ -41,7 +44,7 @@ const Dashboard = () => {
                 to="/instructors"
                 className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
               >
-                Instructors
+                <GiTeacher /> Instructors
               </Link>
             </li>
             <li>
@@ -49,7 +52,7 @@ const Dashboard = () => {
                 to="/classes"
                 className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
               >
-                Classes
+                <MdOndemandVideo /> Classes
               </Link>
             </li>
           </ul>

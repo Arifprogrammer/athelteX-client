@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { BsFillBookmarkHeartFill } from "react-icons/bs";
+import { MdPayment } from "react-icons/md";
+import { RiWechatPayFill } from "react-icons/ri";
 
 const StudentLi = () => {
   return (
@@ -12,7 +15,7 @@ const StudentLi = () => {
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
           }
         >
-          Selected Classes
+          <BsFillBookmarkHeartFill /> Selected Classes
         </NavLink>
       </li>
       <li>
@@ -24,7 +27,7 @@ const StudentLi = () => {
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
           }
         >
-          Enrolled Classes
+          <RiWechatPayFill /> Enrolled Classes
         </NavLink>
       </li>
       <li className="pb-16">
@@ -36,7 +39,7 @@ const StudentLi = () => {
               : "font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
           }
         >
-          Payment History
+          <MdPayment /> Payment History
         </NavLink>
       </li>
     </>

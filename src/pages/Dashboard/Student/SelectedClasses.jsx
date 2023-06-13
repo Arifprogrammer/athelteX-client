@@ -4,8 +4,13 @@ import useSelectedClasse from "../../../hooks/useSelectedClasse";
 import SelectedRowsTable from "./SelectedRowsTable";
 
 const SelectedClasses = () => {
+  //* customhooks
   const [selectedClasses, refetch] = useSelectedClasse();
   const [axiosSecure] = useAxiosSecure();
+
+  const reverseClasses = [...selectedClasses].reverse();
+
+  //* functions
   const handleDeleteData = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -49,8 +54,8 @@ const SelectedClasses = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {selectedClasses &&
-              selectedClasses?.map((singleClass, index) => (
+            {reverseClasses &&
+              reverseClasses?.map((singleClass, index) => (
                 <SelectedRowsTable
                   key={singleClass._id}
                   singleClass={singleClass}
@@ -60,7 +65,7 @@ const SelectedClasses = () => {
               ))}
           </tbody>
         </table>
-        {selectedClasses.length === 0 && (
+        {reverseClasses.length === 0 && (
           <>
             <p className="mt-10 text-red-600 font-bold text-lg text-center">
               You have not selected any classes yet !!!

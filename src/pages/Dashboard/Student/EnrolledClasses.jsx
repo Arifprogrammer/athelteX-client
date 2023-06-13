@@ -4,6 +4,7 @@ import EnrolledRowsTable from "./EnrolledRowsTable";
 const EnrolledClasses = () => {
   //* customhooks
   const [enrolledClasses] = useEnrolledClasses();
+  const reverseClasses = [...enrolledClasses].reverse();
   return (
     <>
       <div className="overflow-x-auto w-full px-20">
@@ -21,8 +22,8 @@ const EnrolledClasses = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {enrolledClasses &&
-              enrolledClasses?.map((singleClass, index) => (
+            {reverseClasses &&
+              reverseClasses?.map((singleClass, index) => (
                 <EnrolledRowsTable
                   key={singleClass._id}
                   singleClass={singleClass}
@@ -31,7 +32,7 @@ const EnrolledClasses = () => {
               ))}
           </tbody>
         </table>
-        {enrolledClasses.length === 0 && (
+        {reverseClasses.length === 0 && (
           <>
             <p className="mt-10 text-red-600 font-bold text-lg text-center">
               You have not enrolled any classes yet !!!
