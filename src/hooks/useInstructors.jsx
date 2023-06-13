@@ -5,7 +5,7 @@ const useInstructors = () => {
     "instructors",
     async () => {
       const res = await fetch(
-        "http://localhost:5000/instructors?role=Instructor"
+        "https://athletex-com-server.vercel.app/instructors?role=Instructor"
       );
       return res.json();
     }

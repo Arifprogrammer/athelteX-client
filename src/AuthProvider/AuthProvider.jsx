@@ -60,7 +60,9 @@ const AuthProvider = ({ children }) => {
       // console.log("observer", currentUser);
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", { email: currentUser.email })
+          .post("https://athletex-com-server.vercel.app/jwt", {
+            email: currentUser.email,
+          })
           .then((data) => {
             localStorage.setItem("user_access_token", data.data.token);
           })

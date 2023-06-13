@@ -6,7 +6,7 @@ Welcome to the AthleteX!!! This project is designed to simplify the process of b
 
 ![Logo](https://i.ibb.co/bswvys8/logo.png)
 
-## Key Features:
+## Key Features with 3 User's Role:
 
 - Student Dashboard: Students have access to a personalized dashboard where they can browse and book athlete classes for their summer vacations. They can also view their enrolled classes and payment history, providing a comprehensive overview of their athletic journey.
 
@@ -32,7 +32,7 @@ Welcome to the AthleteX!!! This project is designed to simplify the process of b
 
 ## Project
 
-- [@Live-link](https://github.com/Arifprogrammer)
+- [@Live-link](https://athletex-com.web.app)
 
 ## Author
 

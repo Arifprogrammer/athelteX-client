@@ -24,11 +24,14 @@ const SocialLogin = () => {
           classes: 0,
         };
         const addUser = async () => {
-          const res = await fetch("http://localhost:5000/users", {
-            method: "PUT",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(user),
-          });
+          const res = await fetch(
+            "https://athletex-com-server.vercel.app/users",
+            {
+              method: "PUT",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(user),
+            }
+          );
           const data = await res.json();
           if (data.upsertedCount || data.matchedCount) {
             toast.success("Login successful", {

@@ -11,7 +11,7 @@ const MngUsersRowsTable = ({ singleClass, index, refetch }) => {
   const [axiosSecure] = useAxiosSecure();
 
   //* functions
-  const makeRole = (id, role) => {
+  const makeRole = (id, role, category) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -22,7 +22,7 @@ const MngUsersRowsTable = ({ singleClass, index, refetch }) => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        const changeRole = { role: role, id: id };
+        const changeRole = { role, id: id, category };
         const updateData = async () => {
           const res = await axiosSecure.patch(
             `/role?email=${user?.email}`,
@@ -64,20 +64,20 @@ const MngUsersRowsTable = ({ singleClass, index, refetch }) => {
         </td>
         <td>
           <button
-            onClick={() => makeRole(_id, "admin")}
+            onClick={() => makeRole(_id, "admin", "owner")}
             className={`border-2 rounded-3xl w-full ${
-              role === "admin"
+              role !== "student"
                 ? "border-pink-300 text-pink-300"
                 : "border-pink-500 text-pink-500 hover:text-white hover:bg-pink-500"
             }`}
-            disabled={role === "admin" ? true : false}
+            disabled={role === "student" ? false : true}
           >
             Make Admin
           </button>
         </td>
         <td>
           <button
-            onClick={() => makeRole(_id, "Instructor")}
+            onClick={() => makeRole(_id, "Instructor", "trainer")}
             className={`border-2 rounded-3xl w-full ${
               role === "student"
                 ? "border-blue-600 text-blue-600 hover:text-white hover:bg-blue-600"
