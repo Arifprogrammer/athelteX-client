@@ -28,7 +28,7 @@ const PaymentHistory = () => {
             {reverseEnrolledClasses &&
               reverseEnrolledClasses?.map((singleClass, index) => (
                 <HistoryRowsTable
-                  key={reverseEnrolledClasses._id}
+                  key={singleClass._id}
                   singleClass={singleClass}
                   index={index}
                 />

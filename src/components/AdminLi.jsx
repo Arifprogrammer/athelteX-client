@@ -5,7 +5,7 @@ const AdminLi = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard/selected"
+          to="/dashboard/classes"
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700 text-xl"
@@ -17,7 +17,7 @@ const AdminLi = () => {
       </li>
       <li className="pb-16">
         <NavLink
-          to="/dashboard/history"
+          to="/dashboard/users"
           className={({ isActive }) =>
             isActive
               ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700 text-xl"

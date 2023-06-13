@@ -31,7 +31,7 @@ const Dashboard = () => {
             <li className="pt-8">
               <Link
                 to="/"
-                className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-xl"
+                className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
               >
                 Home
               </Link>
@@ -39,7 +39,7 @@ const Dashboard = () => {
             <li>
               <Link
                 to="/instructors"
-                className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-xl"
+                className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
               >
                 Instructors
               </Link>
@@ -47,7 +47,7 @@ const Dashboard = () => {
             <li>
               <Link
                 to="/classes"
-                className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-xl"
+                className="font-semibold lg:border-b-4 lg:border-b-white hover:border-b-red-700 lg:text-white hover:text-red-700 lg:transition lg:duration-200 text-lg"
               >
                 Classes
               </Link>

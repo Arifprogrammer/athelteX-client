@@ -19,10 +19,10 @@ const SelectedClasses = () => {
       if (result.isConfirmed) {
         const deleteData = async () => {
           const res = await axiosSecure.delete(`/dashboard/selected/${id}`);
-          console.log(res.data);
+          // console.log(res.data);
+          refetch();
           if (res.data.deletedCount) {
             Swal.fire("Deleted!", "Your class has been deleted.", "success");
-            refetch();
           }
         };
         deleteData();

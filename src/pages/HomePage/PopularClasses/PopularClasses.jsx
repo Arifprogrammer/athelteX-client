@@ -4,12 +4,15 @@ import useClasses from "../../../hooks/useClasses";
 const PopularClasses = () => {
   //* customhooks
   const [classes] = useClasses();
+  const approvedClasses = classes.filter(
+    (singleClasses) => singleClasses.status === "approved"
+  );
 
   return (
     <>
       <Title title={"Students Love The Classes"} />
       <div className="my-container grid grid-cols-1 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-y-12 uppercase px-4 lg:px-0">
-        {classes.slice(0, 8).map((singleClass) => (
+        {approvedClasses.map((singleClass) => (
           <div key={singleClass._id} className="relative">
             <div className="lg:h-[230px] lg:overflow-hidden">
               <img

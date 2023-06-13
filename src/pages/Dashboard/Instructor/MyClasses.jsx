@@ -41,20 +41,20 @@ const MyClasses = () => {
             {myClasses &&
               myClasses?.map((singleClass, index) => (
                 <ClassesRowsTable
-                  key={myClasses._id}
+                  key={singleClass._id}
                   singleClass={singleClass}
                   index={index}
                 />
               ))}
           </tbody>
         </table>
-        {/* {enrolledClasses.length === 0 && (
+        {myClasses.length === 0 && (
           <>
             <p className="mt-10 text-red-600 font-bold text-lg text-center">
-              You have not enrolled any classes yet !!!
+              You have not add any classes yet !!!
             </p>
           </>
-        )} */}
+        )}
       </div>
     </>
   );

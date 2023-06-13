@@ -2,15 +2,19 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import useRole from "../../../hooks/useRole";
 
 const Navbar = () => {
+  //* hooks
   const { user, logOut } = useContext(AuthContext);
-  //! const isAdmin = true;
+
+  //* customhooks
+  const [isRole] = useRole();
 
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        toast.success("You've signed out successfully", {
+        toast.success("Logout successful", {
           position: "top-center",
           autoClose: 1000,
           hideProgressBar: false,
@@ -65,7 +69,11 @@ const Navbar = () => {
         <>
           <li>
             <NavLink
-              to="/dashboard"
+              to={`${
+                (isRole.student && "/dashboard/selected") ||
+                (isRole.instructor && "/dashboard/my_classes") ||
+                (isRole.admin && "/dashboard/classes")
+              }`}
               className={({ isActive }) =>
                 isActive
                   ? "text-red-700 font-semibold lg:border-b-4 border-b-red-700"

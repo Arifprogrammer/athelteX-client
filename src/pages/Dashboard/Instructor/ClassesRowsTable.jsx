@@ -26,7 +26,9 @@ const ClassesRowsTable = ({ singleClass, index }) => {
         >
           {status}
         </td>
-        <td>{feedback.length < 1 ? "No feedback" : feedback}</td>
+        <td>
+          {feedback.length < 1 ? "No feedback" : feedback.slice(0, 25) + "..."}
+        </td>
       </tr>
     </>
   );

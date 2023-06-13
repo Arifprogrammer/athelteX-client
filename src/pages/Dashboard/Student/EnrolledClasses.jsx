@@ -24,7 +24,7 @@ const EnrolledClasses = () => {
             {enrolledClasses &&
               enrolledClasses?.map((singleClass, index) => (
                 <EnrolledRowsTable
-                  key={enrolledClasses._id}
+                  key={singleClass._id}
                   singleClass={singleClass}
                   index={index}
                 />

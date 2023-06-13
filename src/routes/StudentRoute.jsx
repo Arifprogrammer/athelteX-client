@@ -9,7 +9,11 @@ const StudentRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading || isLoading) {
-    return <progress className="progress w-56"></progress>;
+    return (
+      <div className="min-h-[80vh] flex justify-center items-center px-4 lg:px-0">
+        <progress className="progress max-w-[256px]"></progress>
+      </div>
+    );
   }
 
   if (user && isRole.student) {

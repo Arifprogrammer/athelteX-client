@@ -47,7 +47,7 @@ const AddClass = () => {
 
         Toast.fire({
           icon: "success",
-          title: "Selected",
+          title: "Added",
         });
         setTimeout(() => {
           navigate("/dashboard/my_classes");

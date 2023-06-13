@@ -39,8 +39,9 @@ const ClassesCard = ({ singleClass }) => {
     if (user && user?.email) {
       const addSelectedClasses = async () => {
         const res = await axiosSecure.post(`/selected`, singleClass);
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
+          refetch();
           const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -57,7 +58,6 @@ const ClassesCard = ({ singleClass }) => {
             icon: "success",
             title: "Selected",
           });
-          refetch();
           setTimeout(() => {
             navigate("/dashboard/selected");
           }, 1500);
@@ -79,22 +79,26 @@ const ClassesCard = ({ singleClass }) => {
 
   //* useEffetcs
   useEffect(() => {
-    const findClass = selectedClasses.find(
-      (singleClass) => singleClass.classId === _id
-    );
-    if (findClass) {
-      setDisable(true);
+    if (isStudent.student) {
+      const findClass = selectedClasses.find(
+        (singleClass) => singleClass.classId === _id
+      );
+      if (findClass) {
+        setDisable(true);
+      }
     }
-  }, [_id, selectedClasses]);
+  }, [_id, selectedClasses, isStudent.student]);
 
   useEffect(() => {
-    const findClass = enrolledClasses.find(
-      (singleClass) => singleClass.classId === _id
-    );
-    if (findClass) {
-      setPurchase(true);
+    if (isStudent.student) {
+      const findClass = enrolledClasses.find(
+        (singleClass) => singleClass.classId === _id
+      );
+      if (findClass) {
+        setPurchase(true);
+      }
     }
-  }, [_id, enrolledClasses]);
+  }, [_id, enrolledClasses, isStudent.student]);
 
   return (
     <>
@@ -139,12 +143,12 @@ const ClassesCard = ({ singleClass }) => {
           <button
             onClick={() => handleSelectedClasses(singleClass)}
             className={`py-3 px-8 font-semibold -skew-x-12 ${
-              seats === 0 || !isStudent || disable || purchase
+              seats === 0 || !isStudent.student || disable || purchase
                 ? "bg-red-400 text-gray-200"
                 : "text-white  bg-red-700 hover:bg-black lg:transition lg:duration-200"
             } `}
             disabled={
-              (seats === 0 && true) || !isStudent || disable || purchase
+              (seats === 0 && true) || !isStudent.student || disable || purchase
             }
           >
             {purchase ? "Purchased" : "Select"}
