@@ -98,7 +98,7 @@ const MngClsRowsTable = ({ singleClass, index, refetch, handleDeny }) => {
                 ? "border-red-600 text-red-600 hover:text-white hover:bg-red-600"
                 : "border-red-300 text-red-300"
             }`}
-            // disabled={status === "pending..." ? false : true}
+            disabled={status === "pending..." ? false : true}
           >
             Deny
           </button>
