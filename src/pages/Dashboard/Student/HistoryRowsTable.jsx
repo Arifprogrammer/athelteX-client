@@ -1,5 +1,6 @@
+import moment from "moment";
 const HistoryRowsTable = ({ singleClass, index }) => {
-  const { image, className, instructor, price, email, transectionId } =
+  const { image, className, instructor, price, email, transectionId, date } =
     singleClass;
   return (
     <>
@@ -21,6 +22,7 @@ const HistoryRowsTable = ({ singleClass, index }) => {
         <td className="text-green-700">
           Payment <br /> successful
         </td>
+        <td>{moment(date).format("DD-MM-YY, h:mm a")}</td>
         <td className="text-gray-500">{transectionId}</td>
       </tr>
     </>

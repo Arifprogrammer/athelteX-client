@@ -5,3 +5,8 @@
 .my-container {
   @apply lg:w-3/4 mx-auto;
 }
+.StripeElement {
+  border: 2px solid rgb(170, 167, 167);
+  border-radius: 1rem;
+  padding: 1rem;
+}

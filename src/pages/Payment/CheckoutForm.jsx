@@ -81,6 +81,7 @@ const CheckoutForm = ({ specificClass, refetch }) => {
         price: specificClass.price,
         status: "enrolled",
         transectionId: paymentIntent.id,
+        date: new Date(),
       };
       const addData = async () => {
         const res = await axiosSecure.post(
@@ -154,10 +155,10 @@ const CheckoutForm = ({ specificClass, refetch }) => {
           <button
             type="submit"
             disabled={!stripe || process || !clientSecret}
-            className={`font-semibold border-b-4 border-t-4 border-purple-700 px-6 py-1 rounded-xl ${
+            className={`font-semibold border-b-4 border-purple-700 px-6 py-1 rounded-xl bg-purple-300 text-purple-700 ${
               process
                 ? "bg-purple-300 border-purple-300 text-gray-600"
-                : "  hover:border-t-purple-300 hover:bg-purple-300 text-purple-700 hover:text-black lg:transition lg:duration-200"
+                : "   hover:bg-purple-700 hover:text-white lg:transition lg:duration-200"
             }`}
           >
             Pay

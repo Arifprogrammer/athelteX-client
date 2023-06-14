@@ -17,9 +17,10 @@ const PaymentHistory = () => {
               <th>Image</th>
               <th>Class Name</th>
               <th>Instructor</th>
-              <th>Price</th>
+              <th>Amount</th>
               <th>Email</th>
               <th>Status</th>
+              <th>Date</th>
               <th>Tansiction Id</th>
             </tr>
           </thead>
