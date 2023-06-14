@@ -134,7 +134,7 @@ const Navbar = () => {
               {listItem}
             </ul>
           </div>
-          <div className="px-5 pb-8 pt-3 -skew-x-12  bg-[#F1F2F9] -mb-1 hidden lg:flex">
+          <div className="px-5 pb-8 pt-3 -skew-x-12  bg-[#FAF7F5] -mb-1 hidden lg:flex">
             <h1 className="text-3xl text-black font-extrabold">
               Athlete
               <span className="text-red-700 font-extrabold italic text-6xl -mt-6 pl-1">
@@ -144,7 +144,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center">
-          <div className="px-3 pb-5 pt-2 text-black -skew-x-12  bg-[#F1F2F9] -mb-1 lg:hidden">
+          <div className="px-3 pb-5 pt-2 text-black -skew-x-12  bg-[#FAF7F5] -mb-1 lg:hidden">
             <h1 className="text-2xl font-extrabold">
               Athlete
               <span className="text-red-700 font-extrabold italic text-4xl -mt-5 pl-1">
