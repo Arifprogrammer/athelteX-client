@@ -8,7 +8,7 @@ const PaymentHistory = () => {
 
   return (
     <>
-      <div className="overflow-x-auto w-full px-20">
+      <div className="overflow-x-auto w-full">
         <table className="table">
           {/* head */}
           <thead>

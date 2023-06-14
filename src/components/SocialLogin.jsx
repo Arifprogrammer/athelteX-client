@@ -62,7 +62,7 @@ const SocialLogin = () => {
         onClick={logInWithGoogle}
         className="btn bg-transparent text-black border-red-700 border-2 hover:text-white hover:bg-red-700 hover:border-0 gap-2 text-base lg:text-xl"
       >
-        <FaGoogle /> <span>Google</span>
+        <FaGoogle /> <span>Login with Google</span>
       </button>
     </>
   );
