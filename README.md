@@ -1,5 +1,3 @@
-# b712-summer-camp-client-side-Arifprogrammer
-
 # AthleteX
 
 Welcome to the **AthleteX!!!** This project is designed to simplify the process of booking athlete classes for students during their summer vacations. It also allows instructors to effortlessly add and manage their classes. The system includes a secure payment integration, enabling students to conveniently pay for their chosen classes. Additionally, an admin panel is available for effective user and class management. Experience a streamlined platform that connects athletes with their desired classes. Start optimizing your athletic journey today!

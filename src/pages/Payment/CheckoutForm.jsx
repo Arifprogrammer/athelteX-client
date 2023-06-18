@@ -52,6 +52,7 @@ const CheckoutForm = ({ specificClass, refetch }) => {
       setError("");
     }
     setProcess(true);
+
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {

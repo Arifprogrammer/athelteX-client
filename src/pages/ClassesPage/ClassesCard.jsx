@@ -36,6 +36,7 @@ const ClassesCard = ({ singleClass }) => {
 
   //* functions
   const handleSelectedClasses = (singleClass) => {
+    singleClass.userEmail = user.email;
     if (user && user?.email) {
       const addSelectedClasses = async () => {
         const res = await axiosSecure.post(`/selected`, singleClass);
