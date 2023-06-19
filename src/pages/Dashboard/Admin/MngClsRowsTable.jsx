@@ -104,7 +104,7 @@ const MngClsRowsTable = ({ singleClass, index, refetch, handleDeny }) => {
           </button>
         </td>
         <td>
-          {feedback.length < 1 ? "No feedback" : feedback.slice(0, 25) + "..."}
+          {feedback.length < 1 ? "No feedback" : feedback.slice(0, 20) + "..."}
         </td>
       </tr>
     </>
