@@ -4,6 +4,12 @@ Welcome to the **AthleteX!!!** This project is designed to simplify the process 
 
 ![Logo](https://i.ibb.co/bswvys8/logo.png)
 
+## Credential
+
+- **Admin** - khalu@gmail.com | Seco&1
+- **Instructor** - john@example.com | Seco&1
+- **Student** - khali@gmail.com | Seco&1
+
 ## Key Features with 3 User's Role:
 
 - **Student Dashboard:** Students have access to a personalized dashboard where they can browse and book athlete classes for their summer vacations. They can also view their enrolled classes and payment history, providing a comprehensive overview of their athletic journey.
